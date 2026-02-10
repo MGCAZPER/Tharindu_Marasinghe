@@ -26,7 +26,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="tabDash" alignment="1" max="32767" attributes="0"/>
+          <Component id="tabDash" alignment="1" pref="1086" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -95,7 +95,7 @@
                               <Component id="btnStudents" alignment="0" pref="139" max="32767" attributes="0"/>
                               <Component id="btnCourse" alignment="0" max="32767" attributes="0"/>
                               <Component id="btnLectures" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnSettings" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnReport" alignment="0" max="32767" attributes="0"/>
                               <Component id="lblusr" alignment="1" max="32767" attributes="0"/>
                               <Component id="jButton5" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
@@ -119,7 +119,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnLectures" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnSettings" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnReport" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="297" max="32767" attributes="0"/>
                           <Component id="lblusr" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -164,12 +164,12 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLecturesActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnSettings">
+                <Component class="javax.swing.JButton" name="btnReport">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Settings"/>
+                    <Property name="text" type="java.lang.String" value="Student Report"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSettingsActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnReportActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel5">
@@ -238,7 +238,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="475" max="-2" attributes="0"/>
                           <Component id="btnRefresh3" min="-2" pref="136" max="-2" attributes="0"/>
-                          <EmptySpace pref="487" max="32767" attributes="0"/>
+                          <EmptySpace pref="475" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -292,7 +292,7 @@
                                   <Component id="jScrollPane1" min="-2" pref="1009" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="48" max="32767" attributes="0"/>
+                          <EmptySpace pref="36" max="32767" attributes="0"/>
                       </Group>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
@@ -476,7 +476,7 @@
                                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="60" max="32767" attributes="0"/>
+                          <EmptySpace pref="48" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -601,7 +601,7 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="60" max="32767" attributes="0"/>
+                          <EmptySpace pref="48" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
