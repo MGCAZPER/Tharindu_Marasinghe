@@ -9,6 +9,10 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
 import Modle.DBConnection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class Dashboard extends javax.swing.JFrame {
 
@@ -45,23 +49,22 @@ public class Dashboard extends javax.swing.JFrame {
         pneCourse = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblCourse = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btnRefresh2 = new javax.swing.JButton();
-        btnRefresh4 = new javax.swing.JButton();
         btnRefresh3 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         pneStudents = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        tblStudent = new javax.swing.JTable();
         btnRefresh = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         pneLecture = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        tblLec = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         btnRefresh1 = new javax.swing.JButton();
@@ -199,7 +202,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblCourse.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null}
             },
@@ -207,7 +210,7 @@ public class Dashboard extends javax.swing.JFrame {
                 "Course Name", "Admission Fee", "Course Fee", "Course  Director", "Duration"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblCourse);
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic", 1, 24)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -218,10 +221,10 @@ public class Dashboard extends javax.swing.JFrame {
 
         btnRefresh2.setText("Refresh");
 
-        btnRefresh4.setText("Refresh");
-        btnRefresh4.addActionListener(new java.awt.event.ActionListener() {
+        btnRefresh3.setText("Refresh");
+        btnRefresh3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRefresh4ActionPerformed(evt);
+                btnRefresh3ActionPerformed(evt);
             }
         });
 
@@ -237,15 +240,13 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(332, 332, 332)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnRefresh4, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(317, 317, 317))))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1009, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnRefresh3, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1009, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(48, Short.MAX_VALUE))
             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel7Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -261,9 +262,9 @@ public class Dashboard extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnRefresh4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnRefresh3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(96, Short.MAX_VALUE))
             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel7Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -271,49 +272,32 @@ public class Dashboard extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        btnRefresh3.setText("Refresh");
-        btnRefresh3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRefresh3ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout pneCourseLayout = new javax.swing.GroupLayout(pneCourse);
         pneCourse.setLayout(pneCourseLayout);
         pneCourseLayout.setHorizontalGroup(
             pneCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(pneCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pneCourseLayout.createSequentialGroup()
-                    .addGap(475, 475, 475)
-                    .addComponent(btnRefresh3, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(475, Short.MAX_VALUE)))
         );
         pneCourseLayout.setVerticalGroup(
             pneCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pneCourseLayout.createSequentialGroup()
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 119, Short.MAX_VALUE))
-            .addGroup(pneCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pneCourseLayout.createSequentialGroup()
-                    .addGap(359, 359, 359)
-                    .addComponent(btnRefresh3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(402, Short.MAX_VALUE)))
         );
 
         tabDash.addTab("Course", pneCourse);
 
         pneStudents.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tblStudent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "StudentID", "Course Name", "Batch", "Contact", "Email", "DOB", "Adress"
+                "StudentID", "First Name", "Last Name", "Batch", "Email", "Contact", "Adress", "Year"
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(tblStudent);
 
         btnRefresh.setText("Refresh");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
@@ -333,22 +317,24 @@ public class Dashboard extends javax.swing.JFrame {
         pneStudents.setLayout(pneStudentsLayout);
         pneStudentsLayout.setHorizontalGroup(
             pneStudentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pneStudentsLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43))
             .addGroup(pneStudentsLayout.createSequentialGroup()
                 .addGroup(pneStudentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pneStudentsLayout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1009, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pneStudentsLayout.createSequentialGroup()
                         .addGap(418, 418, 418)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pneStudentsLayout.createSequentialGroup()
                         .addGap(474, 474, 474)
                         .addComponent(jLabel2)))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(438, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pneStudentsLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pneStudentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pneStudentsLayout.createSequentialGroup()
+                        .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pneStudentsLayout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1009, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33))))
         );
         pneStudentsLayout.setVerticalGroup(
             pneStudentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -381,15 +367,15 @@ public class Dashboard extends javax.swing.JFrame {
 
         pneLecture.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        tblLec.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null}
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Course Name", "Admission Fee", "Course Fee", "Course  Director", "Duration"
+                "Module", "Lecture Name", "Location", "Batch", "Session", "Datel"
             }
         ));
-        jScrollPane4.setViewportView(jTable4);
+        jScrollPane4.setViewportView(tblLec);
 
         jLabel6.setFont(new java.awt.Font("Yu Gothic", 1, 24)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -470,14 +456,126 @@ public class Dashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRefresh1ActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+         
+
+    DefaultTableModel model = (DefaultTableModel) tblLec.getModel();
+    model.setRowCount(0); 
+
+        DBConnection dbcon =DBConnection.getInstance();
+        Connection con=dbcon.GetConnection();
+        con=DBConnection.getInstance().GetConnection();
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+    
+    try {
+
+
+
+        String sql = "SELECT * FROM schedual";
+        pst = con.prepareStatement(sql);
+
+
+        rs = pst.executeQuery();
+
+        
+        while (rs.next()) {
+            Object[] row = {
+                rs.getString("Module"),
+                rs.getString("LectureName"),
+                rs.getString("Location"),
+                rs.getString("Batch"),
+                rs.getString("Session"),
+                rs.getString("Date"),
+
+            };
+            model.addRow(row);
+        }
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, e.getMessage());
+    }
     }
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+  
+
+    DefaultTableModel model = (DefaultTableModel) tblStudent.getModel();
+    model.setRowCount(0); 
+
+        DBConnection dbcon =DBConnection.getInstance();
+        Connection con=dbcon.GetConnection();
+        con=DBConnection.getInstance().GetConnection();
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+    
+    try {
+
+
+
+        String sql = "SELECT * FROM student";
+        pst = con.prepareStatement(sql);
+
+
+        rs = pst.executeQuery();
+
+        
+        while (rs.next()) {
+            Object[] row = {
+                rs.getString("SID"),
+                rs.getString("Fname"),
+                rs.getString("Lname"),
+                rs.getString("Batch"),
+                rs.getString("Email"),
+                rs.getString("Contact"),
+                rs.getString("Adress"),
+                rs.getString("Year")
+            };
+            model.addRow(row);
+        }
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, e.getMessage());
+    }
     }
     private void btnRefresh3ActionPerformed(java.awt.event.ActionEvent evt) {
-     
+
+
+    DefaultTableModel model = (DefaultTableModel) tblCourse.getModel();
+    model.setRowCount(0); 
+
+        DBConnection dbcon =DBConnection.getInstance();
+        Connection con=dbcon.GetConnection();
+        con=DBConnection.getInstance().GetConnection();
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+    
+    try {
+
+
+
+        String sql = "SELECT * FROM course";
+        pst = con.prepareStatement(sql);
+
+        // 4. Execute Query
+        rs = pst.executeQuery();
+
+        // 5. Load data row by row into JTable
+        while (rs.next()) {
+            Object[] row = {
+                rs.getString("CName"),
+                rs.getString("Afee"),
+                rs.getString("CFee"),
+                rs.getString("CDirector"),
+                rs.getString("Duration")
+            };
+            model.addRow(row);
+        }
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, e.getMessage());
+    }
+
+
     }
     private void btnRefresh4ActionPerformed(java.awt.event.ActionEvent evt) {
      
@@ -578,7 +676,6 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JButton btnRefresh1;
     private javax.swing.JButton btnRefresh2;
     private javax.swing.JButton btnRefresh3;
-    private javax.swing.JButton btnRefresh4;
     private javax.swing.JButton btnReport;
     private javax.swing.JButton btnStudents;
     private javax.swing.JButton jButton5;
@@ -596,9 +693,6 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
     private javax.swing.JLabel lblusr;
     private javax.swing.JPanel pneCourse;
     private javax.swing.JPanel pneHome;
@@ -606,5 +700,8 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel pneMenu;
     private javax.swing.JPanel pneStudents;
     private javax.swing.JTabbedPane tabDash;
+    private javax.swing.JTable tblCourse;
+    private javax.swing.JTable tblLec;
+    private javax.swing.JTable tblStudent;
     // End of variables declaration//GEN-END:variables
 }
