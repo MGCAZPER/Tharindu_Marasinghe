@@ -92,7 +92,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btnProfile" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnAccount" alignment="0" max="32767" attributes="0"/>
                               <Component id="btnStudents" alignment="0" pref="139" max="32767" attributes="0"/>
                               <Component id="btnCourse" alignment="0" max="32767" attributes="0"/>
                               <Component id="btnLectures" alignment="0" max="32767" attributes="0"/>
@@ -112,7 +112,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                          <Component id="btnProfile" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnAccount" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnStudents" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -133,12 +133,12 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="btnProfile">
+                <Component class="javax.swing.JButton" name="btnAccount">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Profile"/>
+                    <Property name="text" type="java.lang.String" value="Accounts"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnProfileActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAccountActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnStudents">

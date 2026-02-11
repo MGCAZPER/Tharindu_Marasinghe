@@ -1,8 +1,6 @@
 package View;
 
 import java.sql.Connection;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -37,7 +35,7 @@ public class Dashboard extends javax.swing.JFrame {
         tabDash = new javax.swing.JTabbedPane();
         pneHome = new javax.swing.JPanel();
         pneMenu = new javax.swing.JPanel();
-        btnProfile = new javax.swing.JButton();
+        btnAccount = new javax.swing.JButton();
         btnStudents = new javax.swing.JButton();
         btnCourse = new javax.swing.JButton();
         btnLectures = new javax.swing.JButton();
@@ -75,10 +73,10 @@ public class Dashboard extends javax.swing.JFrame {
 
         pneMenu.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnProfile.setText("Profile");
-        btnProfile.addActionListener(new java.awt.event.ActionListener() {
+        btnAccount.setText("Accounts");
+        btnAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProfileActionPerformed(evt);
+                btnAccountActionPerformed(evt);
             }
         });
 
@@ -131,7 +129,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(pneMenuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pneMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnProfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAccount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnStudents, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
                     .addComponent(btnCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnLectures, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -147,7 +145,7 @@ public class Dashboard extends javax.swing.JFrame {
             pneMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pneMenuLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(btnProfile)
+                .addComponent(btnAccount)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnStudents)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -605,8 +603,10 @@ public class Dashboard extends javax.swing.JFrame {
         this.dispose(); 
     }
 
-    private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {
-   
+    private void btnAccountActionPerformed(java.awt.event.ActionEvent evt) {
+        Accounts A = new Accounts();
+        A.setVisible(true);
+        this.dispose();
     }
 
     private void btnReportActionPerformed(java.awt.event.ActionEvent evt) {
@@ -669,9 +669,9 @@ public class Dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAccount;
     private javax.swing.JButton btnCourse;
     private javax.swing.JButton btnLectures;
-    private javax.swing.JButton btnProfile;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnRefresh1;
     private javax.swing.JButton btnRefresh2;
