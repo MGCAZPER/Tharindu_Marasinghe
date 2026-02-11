@@ -49,6 +49,8 @@ public class Course extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -222,6 +224,7 @@ public class Course extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtCFeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCFeeActionPerformed
